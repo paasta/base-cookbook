@@ -1,0 +1,118 @@
+#!/bin/bash
+#
+# This script prepares the system to run chef.
+#
+# It is run on server creation and on each deploy. Therefor, each action should
+# be idempotent.
+# -- [z]
+
+# exit on error
+set -e
+
+if [ `id -u` -ne 0 ]; then
+  echo "Fail: this script must be run as root"
+  exit 1
+fi
+
+cd `dirname $0`
+
+# Get current distrib data (only on Ubuntu apparently)
+if [ -f /etc/lsb-release ]; then
+  . /etc/lsb-release
+fi
+
+if [ "$DISTRIB_ID" != "Ubuntu" ]; then
+  echo "Sorry, this script only works on ubuntu !"
+  exit 1
+fi
+
+##### Util functions #####
+
+# $1: name
+# $2: version
+check_gem() {
+  name=$1
+  ver=$2
+  if [ "`gem list $name`" != "$name ($ver)" ] ; then
+    if gem list $name | grep $name > /dev/null ; then
+      gem uninstall $name -x -a -I || true
+    fi
+    gem install $name -v $ver
+  fi
+}
+
+check_debs() {
+  wanted_debs="$@"
+
+  installed_debs=`dpkg-query -l $wanted_debs | grep -e '^ii ' | cut -d ' ' -f 3 2>/dev/null`
+
+  missing_debs=`echo $wanted_debs $installed_debs | tr ' ' '\n' | sort | uniq -u`
+  if [ -n "$missing_debs" ]; then
+    echo "*** Make sure the system is up-to-date ***"
+    apt-get update -qq
+    apt-get install -qy $missing_debs
+  fi
+}
+
+has_user() {
+  user=$1
+  id -u $user >/dev/null 2>&1
+  return $?
+}
+
+has() {
+  which $1 >/dev/null 2>&1
+  return $?
+}
+
+##### Gogogo ! ######
+
+# Don't ... ask ... questions!
+export DEBIAN_FRONTEND='noninteractive'
+
+echo "*** Installing base packages ***"
+
+check_debs curl
+
+echo "*** Installing chef ***"
+
+if ! has chef-solo ; then
+  curl -s -L https://www.opscode.com/chef/install.sh | bash
+fi
+
+# Set the hostname to the instance-id
+# NOTE: using a 2009 API version is intentional. We have old instances that don't
+#       have access to the latest API versions.
+aws_instance=`curl -f -s -m 1 http://169.254.169.254/2009-04-04/meta-data/instance-id || true`
+if [ -n "$aws_instance" ] && [ "`hostname`" != "$aws_instance" ]; then
+  echo "$aws_instance" > /etc/hostname
+  hostname -F /etc/hostname
+  echo 127.0.0.1 $aws_instance localhost > /etc/hosts
+fi
+
+# Prepare the login user
+login_user=mediacore
+if [ -d /vagrant ]; then
+  login_user=vagrant
+fi
+
+if ! has_user $login_user ; then
+  echo "*** Creating $login_user user ***"
+  adduser --shell /bin/bash --disabled-password --gecos "MediaCore" $login_user
+  # Can't really be done on the previous line elegantly :(
+  usermod -G admin $login_user
+
+  # Copy the SSH key over
+  if has_user ubuntu; then
+    cp -r /home/ubuntu/.ssh /home/$login_user
+    chown -R $login_user:$login_user /home/$login_user
+    #we need to keep the user for the next bootstraps
+    #userdel -r -f ubuntu
+  fi
+fi
+
+# Allow sudo without password
+if ! [ -f /etc/sudoers.d/00-$login_user ]; then
+  echo "$login_user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/00-$login_user
+  chmod 440 /etc/sudoers.d/00-$login_user
+fi
