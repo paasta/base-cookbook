@@ -1,5 +1,7 @@
 # machine-base cookbook
 
+One cookbook to rule them all...
+
 Basic config for all the machines. This is where we put things that
 we expect to have on all the machines.
 
