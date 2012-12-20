@@ -28,19 +28,6 @@ fi
 
 ##### Util functions #####
 
-# $1: name
-# $2: version
-check_gem() {
-  name=$1
-  ver=$2
-  if [ "`gem list $name`" != "$name ($ver)" ] ; then
-    if gem list $name | grep $name > /dev/null ; then
-      gem uninstall $name -x -a -I || true
-    fi
-    gem install $name -v $ver
-  fi
-}
-
 check_debs() {
   wanted_debs="$@"
 
@@ -76,6 +63,7 @@ check_debs curl git-core
 
 echo "*** Installing chef ***"
 
+# TODO: Remove the dependency on that external service
 if ! has chef-solo ; then
   curl -s -L https://www.opscode.com/chef/install.sh | bash
 fi
