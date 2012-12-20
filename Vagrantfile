@@ -4,9 +4,9 @@
 require 'berkshelf/vagrant'
 
 Vagrant::Config.run do |config|
-  config.vm.box = "mediacore-precise64"
+  config.vm.box = "ec2-precise64"
   config.vm.box_url =
-    "https://s3.amazonaws.com/mediacore-public/boxes/mediacore-precise64.box"
+    "https://s3.amazonaws.com/mediacore-public/boxes/ec2-precise64.box"
 
   config.vm.host_name = "mediacore"
 
