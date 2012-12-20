@@ -6,11 +6,12 @@
 #
 include_recipe "machine-base::hostname"
 include_recipe "build-essential"
-include_recipe "git"
 include_recipe "logrotate"
 include_recipe "motd-tail"
 include_recipe "openssh"
 include_recipe "python"
+
+package "git"
 
 # Packages we want on all machines (as a sysadmin)
 package "curl"
