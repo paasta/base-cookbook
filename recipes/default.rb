@@ -4,6 +4,7 @@
 #
 # Copyright (C) 2012 MediaCore
 #
+include_recipe "machine-base::hostname"
 include_recipe "build-essential"
 include_recipe "git"
 include_recipe "logrotate"
@@ -25,12 +26,6 @@ package "vim-nox"
   consolekit
   ufw
 ].each{|p| dpkg_package(p){ action(:purge) } }
-
-# Make sure /etc/hosts is configured properly
-template "/etc/hosts" do
-  source "hosts.erb"
-  mode 0644
-end
 
 # Decent VIM config
 cookbook_file "/etc/vim/vimrc.local" do

@@ -72,22 +72,12 @@ export DEBIAN_FRONTEND='noninteractive'
 
 echo "*** Installing base packages ***"
 
-check_debs curl
+check_debs curl git-core
 
 echo "*** Installing chef ***"
 
 if ! has chef-solo ; then
   curl -s -L https://www.opscode.com/chef/install.sh | bash
-fi
-
-# Set the hostname to the instance-id
-# NOTE: using a 2009 API version is intentional. We have old instances that don't
-#       have access to the latest API versions.
-aws_instance=`curl -f -s -m 1 http://169.254.169.254/2009-04-04/meta-data/instance-id || true`
-if [ -n "$aws_instance" ] && [ "`hostname`" != "$aws_instance" ]; then
-  echo "$aws_instance" > /etc/hostname
-  hostname -F /etc/hostname
-  echo 127.0.0.1 $aws_instance localhost > /etc/hosts
 fi
 
 # Prepare the login user
