@@ -52,6 +52,12 @@ None yet
 default
 -------
 
+hostname
+--------
+
+Sets the machine's hostname to `node[:machine_base][:hostname]` or use
+some sane defaults.
+
 # Author
 
 Author:: Jonas Pfenniger <jonas@mediacore.com>
