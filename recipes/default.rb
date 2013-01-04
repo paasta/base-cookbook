@@ -26,6 +26,7 @@ package "vim-nox"
   apport
   consolekit
   ufw
+  whoopsie
 ].each{|p| dpkg_package(p){ action(:purge) } }
 
 # Decent VIM config
