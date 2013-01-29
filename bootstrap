@@ -37,7 +37,7 @@ check_debs() {
   if [ -n "$missing_debs" ]; then
     echo "*** Make sure the system is up-to-date ***"
     apt-get update -qq
-    apt-get install -qy $missing_debs
+    DEBIAN_FRONTEND='noninteractive' apt-get install -qy $missing_debs
   fi
 }
 
@@ -54,8 +54,6 @@ has() {
 
 ##### Gogogo ! ######
 
-# Don't ... ask ... questions!
-export DEBIAN_FRONTEND='noninteractive'
 
 echo "*** Installing base packages ***"
 
