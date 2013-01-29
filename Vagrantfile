@@ -28,5 +28,6 @@ Vagrant::Config.run do |config|
   # end
   config.vm.provision :chef_solo do |chef|
     chef.add_recipe "machine-base"
+    chef.json = { :machine_base => { :hostname => "machine-base" } }
   end
 end
