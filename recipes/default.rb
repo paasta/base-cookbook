@@ -2,7 +2,7 @@
 # Cookbook Name:: machine-base
 # Recipe:: default
 #
-# Copyright (C) 2012 MediaCore
+# Copyright (C) 2013 MediaCore
 #
 include_recipe "machine-base::hostname"
 include_recipe "build-essential"

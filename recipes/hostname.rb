@@ -1,4 +1,9 @@
-
+#
+# Cookbook Name:: machine-base
+# Recipe:: hostname
+#
+# Copyright (C) 2013 MediaCore
+#
 file "/etc/hostname" do
   mode 0644
   content "#{node.machine_base.hostname}\n"

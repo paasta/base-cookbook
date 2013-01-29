@@ -1,6 +1,6 @@
 name             "machine-base"
-maintainer       "MediaCore"
-maintainer_email "info@mediacore.com"
+maintainer       "Jonas Pfenniger"
+maintainer_email "jonas@mediacore.com"
 license          "All rights reserved"
 description      "Installs/Configures machine-base"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))

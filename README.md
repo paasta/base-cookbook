@@ -8,8 +8,8 @@ we expect to have on all the machines.
 This cookbook is to be shared between all the MediaCore projects and
 also acts as an example on how to build cookbooks.
 
-This cookbook was created with `berks cookbook foobar --vagrant --git
---foodcritic -L mit -m MediaCore -e jonas@mediacore.com` and then
+This cookbook was created with `berks cookbook machine-base --vagrant --git
+--foodcritic -L mit -m MediaCore -e info@mediacore.com` and then
 adapted.
 
 Verification of the cookbook's structure is done by running
@@ -62,4 +62,4 @@ some sane defaults.
 
 Author:: Jonas Pfenniger <jonas@mediacore.com>
 
-Copyright 2012, MediaCore.
+Copyright 2013, MediaCore.

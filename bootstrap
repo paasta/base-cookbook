@@ -69,14 +69,14 @@ if ! has chef-solo ; then
 fi
 
 # Prepare the login user
-login_user=mediacore
+login_user=
 if [ -d /vagrant ]; then
   login_user=vagrant
 fi
 
 if ! has_user $login_user ; then
   echo "*** Creating $login_user user ***"
-  adduser --shell /bin/bash --disabled-password --gecos "MediaCore" $login_user
+  adduser --shell /bin/bash --disabled-password --gecos "Login user" $login_user
   # Can't really be done on the previous line elegantly :(
   usermod -G admin $login_user
 
