@@ -12,4 +12,7 @@ include_recipe "logrotate"
 include_recipe "openssh"
 include_recipe "python"
 
+# Make sure the machine's time is in sync
+package "chrony"
+
 package "git"
