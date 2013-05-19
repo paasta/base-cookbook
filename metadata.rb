@@ -8,11 +8,11 @@ version          "1.0.0"
 
 recipe           "machine-base", "Installs the canonical system"
 recipe           "machine-base::hostname", "Setups the machine's hostname"
+recipe           "machine-base::sysadmin", "Common sysadmin tools"
 
 supports         "ubuntu",  "= 12.04"
 
 depends          "build-essential"
 depends          "logrotate"
-depends          "motd-tail"
 depends          "openssh"
 depends          "python"
