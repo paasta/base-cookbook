@@ -1,9 +1,6 @@
 """
-" MediaCore vimrc file
-"
 " We need to build a consensus on the options we want. Priority goes to the
 " people using the machines oftenly.
-"
 """
 
 " Global

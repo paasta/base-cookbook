@@ -2,7 +2,7 @@
 # Cookbook Name:: machine-base
 # Recipe:: sysadmin
 #
-# Copyright (C) 2013 MediaCore
+# Copyright (C) 2013 Jonas Pfenniger
 #
 
 # These are the tools that every sysadmin wants to have on his box

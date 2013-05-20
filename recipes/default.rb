@@ -2,7 +2,7 @@
 # Cookbook Name:: machine-base
 # Recipe:: default
 #
-# Copyright (C) 2013 MediaCore
+# Copyright (C) 2013 Jonas Pfenniger
 #
 include_recipe "machine-base::hostname"
 include_recipe "machine-base::sysadmin"

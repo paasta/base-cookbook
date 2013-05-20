@@ -5,11 +5,8 @@ One cookbook to rule them all...
 Basic config for all the machines. This is where we put things that
 we expect to have on all the machines.
 
-This cookbook is to be shared between all the MediaCore projects and
-also acts as an example on how to build cookbooks.
-
 This cookbook was created with `berks cookbook machine-base --vagrant --git
---foodcritic -L mit -m MediaCore -e info@mediacore.com` and then
+--foodcritic -L mit -m "Jonas Pfenniger" -e jonas@pfenniger.name` and then
 adapted.
 
 Verification of the cookbook's structure is done by running
@@ -60,6 +57,6 @@ some sane defaults.
 
 # Author
 
-Author:: Jonas Pfenniger <jonas@mediacore.com>
+Author:: Jonas Pfenniger <jonas@pfenniger.name>
 
-Copyright 2013, MediaCore.
+Copyright 2013, Jonas Pfenniger.

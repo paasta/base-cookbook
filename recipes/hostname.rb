@@ -2,7 +2,7 @@
 # Cookbook Name:: machine-base
 # Recipe:: hostname
 #
-# Copyright (C) 2013 MediaCore
+# Copyright (C) 2013 Jonas Pfenniger
 #
 file "/etc/hostname" do
   mode 0644
