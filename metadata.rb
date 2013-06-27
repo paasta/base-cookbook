@@ -1,14 +1,14 @@
-name             "machine-base"
+name             "base"
 maintainer       "Jonas Pfenniger"
 maintainer_email "jonas@pfenniger.name"
 license          "All rights reserved"
-description      "Installs/Configures machine-base"
+description      "Installs/Configures base"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "1.0.0"
 
-recipe           "machine-base", "Installs the canonical system"
-recipe           "machine-base::hostname", "Setups the machine's hostname"
-recipe           "machine-base::sysadmin", "Common sysadmin tools"
+recipe           "base", "Installs the canonical system"
+recipe           "base::hostname", "Setups the machine's hostname"
+recipe           "base::sysadmin", "Common sysadmin tools"
 
 supports         "ubuntu",  "= 12.04"
 

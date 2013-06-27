@@ -1,11 +1,11 @@
 #
-# Cookbook Name:: machine-base
+# Cookbook Name:: base
 # Recipe:: default
 #
 # Copyright (C) 2013 Jonas Pfenniger
 #
-include_recipe "machine-base::hostname"
-include_recipe "machine-base::sysadmin"
+include_recipe "base::hostname"
+include_recipe "base::sysadmin"
 
 include_recipe "build-essential"
 include_recipe "logrotate"

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: machine-base
+# Cookbook Name:: base
 # Recipe:: sysadmin
 #
 # Copyright (C) 2013 Jonas Pfenniger

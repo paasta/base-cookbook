@@ -1,11 +1,11 @@
-# machine-base cookbook
+# base cookbook
 
 One cookbook to rule them all...
 
 Basic config for all the machines. This is where we put things that
 we expect to have on all the machines.
 
-This cookbook was created with `berks cookbook machine-base --vagrant --git
+This cookbook was created with `berks cookbook base --vagrant --git
 --foodcritic -L mit -m "Jonas Pfenniger" -e jonas@pfenniger.name` and then
 adapted.
 
@@ -38,7 +38,7 @@ The following Opscode cookbooks are dependencies:
 
 # Usage
 
-Put machine-base:default it as first include in all runs.
+Put base:default it as first include in all runs.
 
 # Attributes
 

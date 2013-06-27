@@ -8,12 +8,13 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ec2-precise64"
   config.vm.box_url =
     "https://s3.amazonaws.com/mediacore-public/boxes/ec2-precise64.box"
-  config.vm.hostname = "machine-base"
+  config.vm.hostname = "base"
 
   config.vm.provision :shell,
     path: File.expand_path('../script/vagrant-bootstrap', __FILE__)
+
   config.vm.provision :chef_solo do |chef|
-    chef.add_recipe "machine-base"
-    chef.json = { machine_base: { hostname: "machine-base" } }
+    chef.add_recipe "base"
+    chef.json = { base: { hostname: "base" } }
   end
 end

@@ -1,21 +1,21 @@
 #
-# Cookbook Name:: machine-base
+# Cookbook Name:: base
 # Recipe:: hostname
 #
 # Copyright (C) 2013 Jonas Pfenniger
 #
 file "/etc/hostname" do
   mode 0644
-  content "#{node.machine_base.hostname}\n"
+  content "#{node.base.hostname}\n"
 end
 
 template "/etc/hosts" do
   mode 0644
   source "hosts.erb"
-  variables hostname: node.machine_base.hostname
+  variables hostname: node.base.hostname
 end
 
-if node.hostname != node.machine_base.hostname
+if node.hostname != node.base.hostname
   execute "hostname -b -F /etc/hostname"
   ohai "reload"
 end
