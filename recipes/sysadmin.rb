@@ -8,13 +8,17 @@
 # These are the tools that every sysadmin wants to have on his box
 
 # Packages we want on all machines (as a sysadmin)
-package "curl"
-package "htop"
-package "iotop"
-package "screen"
-package "sqlite3"
-package "strace"
-package "vim-nox"
+%w[
+  htop
+  iotop
+  iftop
+  cbm
+  bmon
+  curl
+  screen
+  strace
+  vim-nox
+].each{|p| package(p)}
 
 # Packages we don't want
 %w[
