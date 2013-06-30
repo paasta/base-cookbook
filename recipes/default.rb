@@ -4,6 +4,9 @@
 #
 # Copyright (C) 2013 Jonas Pfenniger
 #
+
+include_recipe "apt"
+
 include_recipe "base::hostname"
 include_recipe "base::sysadmin"
 
