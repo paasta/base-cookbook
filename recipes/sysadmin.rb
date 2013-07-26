@@ -20,14 +20,6 @@
   vim-nox
 ].each{|p| package(p)}
 
-# Packages we don't want
-%w[
-  apport
-  consolekit
-  ufw
-  whoopsie
-].each{|p| dpkg_package(p){ action(:purge) } }
-
 # Decent VIM config
 cookbook_file "/etc/vim/vimrc.local" do
   mode 0644

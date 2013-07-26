@@ -19,3 +19,11 @@ include_recipe "python"
 package "chrony"
 
 package "git"
+
+# Packages we don't want
+%w[
+  apport
+  ufw
+  whoopsie
+].each{|p| dpkg_package(p){ action(:purge) } }
+
