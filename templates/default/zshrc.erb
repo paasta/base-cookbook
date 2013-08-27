@@ -1,0 +1,30 @@
+
+### Use colors ###
+
+autoload -U colors
+colors
+
+### Auto-complete ###
+
+autoload -U compinit
+compinit
+
+### Prompt ###
+
+autoload -U promptinit
+promptinit
+prompt walters
+
+### Key bindings ###
+
+bindkey -v
+bindkey "^R" history-incremental-search-backward
+
+
+### Aliases ###
+
+# Make sure sensible commands require a confirmation
+alias cp="${aliases[cp]:-cp} -i"
+alias ln="${aliases[ln]:-ln} -i"
+alias mv="${aliases[mv]:-mv} -i"
+alias rm="${aliases[rm]:-rm} -i"
