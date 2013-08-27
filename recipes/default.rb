@@ -20,6 +20,9 @@ package "chrony"
 # Configure the sysadmin and it's tools
 include_recipe "base::sysadmin"
 
+# Configure the remote login user
+include_recipe "base::login"
+
 # Packages we don't want
 %w[
   apport
