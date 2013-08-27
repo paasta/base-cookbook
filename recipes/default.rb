@@ -8,11 +8,8 @@
 # Make sure the hostname is correct before doing anything else
 include_recipe "base::hostname"
 
-# Make sure we have the latest apt source lists
-include_recipe "apt"
-
-#
-include_recipe "logrotate"
+# Configure system logging
+include_recipe "base::syslog"
 
 # Make sure the machine's time is in sync
 package "chrony"
@@ -22,6 +19,9 @@ include_recipe "base::sysadmin"
 
 # Configure the remote login user
 include_recipe "base::login"
+
+# Configure root
+include_recipe "base::sysadmin"
 
 # Packages we don't want
 %w[

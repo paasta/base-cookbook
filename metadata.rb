@@ -10,6 +10,7 @@ recipe           "base",           "Installs all the base recipes"
 recipe           "base::hostname", "Setups the machine's hostname"
 recipe           "base::sysadmin", "Root tools and setup"
 recipe           "base::login",    "SSH login user"
+recipe           "base::syslog",   "Syslog support"
 
 supports         "ubuntu",  "= 12.04"
 

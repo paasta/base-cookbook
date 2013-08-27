@@ -20,7 +20,8 @@ Vagrant.configure("2") do |config|
         hostname: "base",
         login: {
           user: "login"
-        }
+        },
+        loghost: "@1.2.3.4:512",
       }
     }
   end
