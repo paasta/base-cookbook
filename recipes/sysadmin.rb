@@ -9,12 +9,14 @@
 
 # Packages we want on all machines (as a sysadmin)
 %w[
-  htop
-  iotop
-  iftop
-  cbm
   bmon
+  cbm
   curl
+  htop
+  iftop
+  iotop
+  ngrep
+  netcat
   screen
   strace
   vim-nox
