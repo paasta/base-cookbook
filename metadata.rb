@@ -13,6 +13,5 @@ recipe           "base::sysadmin", "Common sysadmin tools"
 supports         "ubuntu",  "= 12.04"
 
 depends          "apt"
-depends          "build-essential"
 depends          "logrotate"
 depends          "openssh"
