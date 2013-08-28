@@ -53,7 +53,7 @@ user "root" do
   shell "/bin/zsh"
   action :modify
 end
-template "/root/.zshrc" do
-  source "zshrc.erb"
+cookbook_file "/root/.zshrc" do
+  source "zshrc"
   mode 0644
 end
