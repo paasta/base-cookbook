@@ -39,9 +39,10 @@ end
 
 authorized_keys = [
   node.base.login.public_keys,
+  (File.read("/home/#{node.base.login.user}/.ssh/authorized_keys") rescue []),
   (File.read('/home/vagrant/.ssh/authorized_keys').split("\n") rescue []),
   (File.read('/home/ubuntu/.ssh/authorized_keys').split("\n") rescue [])
-].flatten.compact
+].flatten.compact.sort.uniq
 
 file "/home/#{node.base.login.user}/.ssh/authorized_keys" do
   mode 0600
