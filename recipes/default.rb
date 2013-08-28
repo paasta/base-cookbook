@@ -11,6 +11,9 @@ include_recipe "base::hostname"
 # Configure system logging
 include_recipe "base::syslog"
 
+# Configure local mail delivery (syslog)
+include_recipe "base::mail"
+
 # Make sure the machine's time is in sync
 package "chrony"
 
