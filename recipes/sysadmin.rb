@@ -46,6 +46,9 @@ end
 directory "/root/.vim" do
   mode 0755
 end
+directory "/root/.vim/swap" do
+  mode 0755
+end
 
 # Use zsh
 package "zsh"
