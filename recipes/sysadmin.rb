@@ -27,11 +27,9 @@ file "/etc/update-motd.d/10-help-text" do
 end
 
 # Message on login
-template "/etc/motd.tail" do
-  source "motd.tail.erb"
-  group "root"
-  owner "root"
-  mode "0644"
+template "/etc/update-motd.d/95-chef-deploy" do
+  source "motd.erb"
+  mode 0755
   backup 0
 end
 
