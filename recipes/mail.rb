@@ -12,11 +12,10 @@
 # MTA.
 #
 # See: http://github.com/zimbatm/logmail
-logmail_deb = 'logmail_1.0.0_all.deb'
-logmail_local_cache = "#{Chef::Config[:file_cache_path]}/#{logmail_deb}"
+logmail_local_cache = "#{Chef::Config[:file_cache_path]}/logmail_1.0.0_all.deb"
 
 remote_file logmail_local_cache do
-  source "http://zimbatm.s3.amazonaws.com/logmail/#{logmail_deb}"
+  source "https://github.com/zimbatm/logmail/releases/download/v1.0.0/logmail_1.0.0_all.deb"
   checksum "d0357d6634deea01a99361ea46fc4b92b4f1b602c2e6a6dd07c5e3716245ef1c"
   mode 0644
 end
