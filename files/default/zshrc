@@ -15,7 +15,7 @@ precmd() {
   local last_status="[$?]"
   [ $last_status = "[0]" ] && last_status=
 
-  echo "# $(id -un)@$(hostname):$PWD $last_status"
+  echo "--- $(id -un)@$(hostname):$PWD $last_status"
 }
 PROMPT='# '
 
