@@ -50,3 +50,6 @@ cookbooks/*
 
 # Vagrant
 .vagrant
+
+# Project
+script/*
