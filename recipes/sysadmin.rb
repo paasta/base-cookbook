@@ -19,6 +19,7 @@
   netcat
   screen
   strace
+  sysstat
 ].each{|p| package(p)}
 
 # Too much data on login is not good
