@@ -17,14 +17,11 @@ include_recipe "base::mail"
 # Make sure the machine's time is in sync
 package "chrony"
 
-# Configure the sysadmin and it's tools
+# Configure root and it's tools
 include_recipe "base::sysadmin"
 
 # Configure the remote login user
 include_recipe "base::login"
-
-# Configure root
-include_recipe "base::sysadmin"
 
 # Packages we don't want
 %w[
