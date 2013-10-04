@@ -19,9 +19,9 @@ depend Dependfile build
 ## Copying the release files ##
 rm -rf "$DESTDIR"
 mkdir -p "$DESTDIR"
-cp -r * "$DESTDIR"
+git archive HEAD | tar -x -C "$DESTDIR"
 cd "$DESTDIR"
 
 ## Installing the runtime dependencies ##
-bundle install --path=vendor --deployment --binstubs=bin --without="development test"
-berks install --path vendor/cookbooks
+bundle install --path=vendor --binstubs=bin --deployment --standalone --without="development test"
+BERKSHELF_PATH=$CACHE_DIR/berkshelf berks install --path vendor/cookbooks

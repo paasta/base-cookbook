@@ -2,6 +2,12 @@
 # Don't ... ask ... questions !
 export DEBIAN_FRONTEND='noninteractive'
 
+if [ `id -u` = 0 ]; then
+  sudo() {
+    "$@"
+  }
+fi
+
 fail() {
   echo "$@" >&2
   exit 1
@@ -29,24 +35,26 @@ depend() {
 }
 
 check_debs() {
-  local wanted_debs="$@"
-  local installed_debs=`dpkg-query -l $wanted_debs | grep -e '^ii ' | cut -d ' ' -f 3 2>/dev/null`
-  local missing_debs=`echo $wanted_debs $installed_debs | tr ' ' '\n' | sort | uniq -u | tr '\n' ' '`
+  local wanted="$@"
+  [ -z "$wanted" ] && return
 
-  if [ -n "$missing_debs" ]; then
-    echo "Missing DEBS: $missing_debs"
-    sudo apt-get update -qq
-    sudo apt-get install -qy $missing_debs
-  fi
+  local installed=`dpkg-query -l $wanted | grep -e '^ii ' | cut -d ' ' -f 3 2>/dev/null`
+  local missing=`echo $wanted $installed | tr ' ' '\n' | sort | uniq -u | tr '\n' ' '`
+  [ -z "$missing" ] && return
+
+  echo "Missing DEBS: $missing"
+  sudo apt-get update -qq
+  sudo apt-get install -qy $missing
 }
 
 check_gems() {
-  local wanted_gems="$@"
-  local installed_gems=`gem list | cut -d ' ' -f 1 | tr '\n' ' '`
-  local missing_gems=`echo $wanted_gems $installed_gems | tr ' ' '\n' | sort | uniq -u | tr '\n' ' '`
+  local wanted="$@"
+  [ -z "$wanted" ] && return
 
-  if [ -n "$missing_gems" ]; then
-    echo "Missing GEMS: $missing_gems"
-    sudo gem install --no-ri --no-rdoc --force $missing_gems
-  fi
+  local installed=`gem list | cut -d ' ' -f 1 | tr '\n' ' '`
+  local missing=`echo $wanted $installed | tr ' ' '\n' | sort | uniq -u | tr '\n' ' '`
+  [ -z "$missing" ] && return
+
+  echo "Missing GEMS: $missing"
+  sudo gem install --no-ri --no-rdoc --force $missing
 }
