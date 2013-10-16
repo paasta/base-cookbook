@@ -23,3 +23,6 @@ include_recipe "base::sysadmin"
 # Configure the remote login user
 include_recipe "base::login"
 
+# Configure the app environment
+include_recipe "base::app"
+

@@ -7,6 +7,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "1.0.0"
 
 recipe           "base",           "Installs all the base recipes"
+recipe           "base::app",      "Runtime environment for apps"
 recipe           "base::hostname", "Setups the machine's hostname"
 recipe           "base::login",    "SSH login user"
 recipe           "base::packages", "Base system packages"
