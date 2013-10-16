@@ -14,8 +14,8 @@ include_recipe "base::syslog"
 # Configure local mail delivery (syslog)
 include_recipe "base::mail"
 
-# Make sure the machine's time is in sync
-package "chrony"
+# Base packages
+include_recipe "base::packages"
 
 # Configure root and it's tools
 include_recipe "base::sysadmin"
@@ -23,9 +23,3 @@ include_recipe "base::sysadmin"
 # Configure the remote login user
 include_recipe "base::login"
 
-# Packages we don't want
-%w[
-  apport
-  ufw
-  whoopsie
-].each{|p| dpkg_package(p){ action(:purge) } }
