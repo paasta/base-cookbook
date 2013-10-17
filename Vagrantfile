@@ -11,11 +11,14 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "base"
 
   config.vm.provision :shell,
-    path: File.expand_path('../script/vagrant-bootstrap', __FILE__)
+    inline: <<EOF
+if ! which chef-solo >/dev/null 2>&1 ; then
+  wget -q -O- https://www.opscode.com/chef/install.sh | bash
+fi
+EOF
 
   config.vm.provision :chef_solo do |chef|
     chef.add_recipe "base"
-    chef.add_recipe "base::berkshelf"
     chef.json = {
       base: {
         hostname: "base",
