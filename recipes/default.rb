@@ -5,11 +5,11 @@
 # Copyright (C) 2013 Jonas Pfenniger
 #
 
-# Make sure the hostname is correct before doing anything else
-include_recipe "base::hostname"
-
 # Make sure the apt indexes are up to date
 include_recipe "base::apt"
+
+# Make sure the hostname is correct before doing anything else
+include_recipe "base::hostname"
 
 # Configure system logging
 include_recipe "base::syslog"
