@@ -8,6 +8,7 @@ version          "1.0.0"
 
 recipe           "base",           "Installs all the base recipes"
 recipe           "base::app",      "Runtime environment for apps"
+recipe           "base::berkshelf","Installs berkshelf on the system"
 recipe           "base::hostname", "Setups the machine's hostname"
 recipe           "base::login",    "SSH login user"
 recipe           "base::packages", "Base system packages"

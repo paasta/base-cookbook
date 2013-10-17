@@ -17,6 +17,9 @@ include_recipe "base::mail"
 # Base packages
 include_recipe "base::packages"
 
+# Berkshelf
+include_recipe "base::berkshelf"
+
 # Configure root and it's tools
 include_recipe "base::sysadmin"
 
