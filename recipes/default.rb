@@ -14,6 +14,9 @@ include_recipe "base::hostname"
 # Configure system logging
 include_recipe "base::syslog"
 
+# Configure dns
+include_recipe "base::dns"
+
 # Configure local mail delivery (syslog)
 include_recipe "base::mail"
 
