@@ -18,3 +18,5 @@ package "ansible"
 # Used by Ansible accelerate mode
 package "python-keyczar"
 
+# Used by apt_repo
+package "python-pycurl"
