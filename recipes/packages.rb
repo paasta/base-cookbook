@@ -10,6 +10,7 @@ package "chrony"
 
 # Base python packages
 package "ipython"
+package "python-dev"
 package "python-pip"
 package "python-virtualenv"
 
