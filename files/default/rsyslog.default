@@ -6,4 +6,4 @@
 # 
 # See rsyslogd(8) for more details
 
-RSYSLOGD_OPTIONS="-c3"
+RSYSLOGD_OPTIONS="-c5"
