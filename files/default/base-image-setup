@@ -1,5 +1,4 @@
 #!/bin/sh
-set -e
 
 # Auto-hostname to the instance-id on AWS
 if [ -n "$INSTANCE_ID" ]; then
@@ -10,7 +9,11 @@ fi
 
 # Auto-striping of all the ephemeral disks
 disk_count=`ls /dev/xvd? | wc -l`
-if [ "$disk_count" -gt 0 ]; then
+if [ "$disk_count" -gt 0 ] && ! [ -b /dev/mapper/mnt-mnt ]; then
+  umount /mnt
+  grep -v -e '\s/mnt\s' /etc/fstab > /etc/fstab.new
+  mv /etc/fstab.new /etc/fstab
+
   # LVM
   for disk in `ls /dev/xvd?`; do
     lvm pvcreate $disk
