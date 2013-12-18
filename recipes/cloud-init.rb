@@ -6,7 +6,7 @@
 #
 
 package "cloud-init"
-package "mdadm"
+package "lvm2"
 
 # TODO: Find a better place to put this script. We don't want it to be in the
 #       PATH.
