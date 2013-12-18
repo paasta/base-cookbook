@@ -22,6 +22,9 @@ include_recipe "base::mail"
 
 ### Order independent starting from here ###
 
+# Cloud-init
+include_recipe "base::cloud-init"
+
 # Ansible
 include_recipe "base::ansible"
 
