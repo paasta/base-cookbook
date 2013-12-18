@@ -34,6 +34,11 @@ template "/etc/update-motd.d/95-chef-deploy" do
   backup 0
 end
 
+cookbook_file "/etc/default/sysstat" do
+  owner "root"
+  mode 0644
+end
+
 ### Root user config ###
 
 # Decent VIM config
