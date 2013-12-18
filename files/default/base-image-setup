@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Auto-hostname to the instance-id on AWS
+if [ -n "$INSTANCE_ID" ]; then
+  echo $INSTANCE_ID > /etc/hostname
+  hostname -F /etc/hostname
+  sed -e "s/127.0.1.1 .*/\0 $INSTANCE_ID/" -i /etc/hosts
+fi
+
+# Auto-striping of all the ephemeral disks
+disk_count=`ls /dev/xvd? | wc -l`
+if [ "$disk_count" -gt 0 ] && ! [ -b /dev/mapper/mnt-mnt ]; then
+  umount /mnt
+  grep -v -e '\s/mnt\s' /etc/fstab > /etc/fstab.new
+  mv /etc/fstab.new /etc/fstab
+
+  # LVM
+  for disk in `ls /dev/xvd?`; do
+    lvm pvcreate $disk
+  done
+  lvm vgcreate mnt `ls /dev/xvd?`
+  lvm lvcreate -i$disk_count -l100%VG -n mnt mnt
+
+  mkfs.ext4 /dev/mapper/mnt-mnt
+  echo /dev/mapper/mnt-mnt /mnt auto defaults,nobootwait,comment=cloudconfig 0 2 >> /etc/fstab
+  mount -a
+fi
