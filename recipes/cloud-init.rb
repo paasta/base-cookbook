@@ -8,7 +8,9 @@
 package "cloud-init"
 package "mdadm"
 
-cookbook_file "/var/lib/cloud/scripts/base-image-setup" do
+# TODO: Find a better place to put this script. We don't want it to be in the
+#       PATH.
+cookbook_file "/var/lib/base-image-setup" do
   owner "root"
   mode 0755
 end
