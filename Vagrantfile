@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell,
     inline: <<EOF
 if ! which chef-solo >/dev/null 2>&1 ; then
-  wget -q -O- https://www.opscode.com/chef/install.sh | bash -s -- -v 11.6.2
+  wget -q -O- https://www.opscode.com/chef/install.sh | bash -s -- -v 11.8.2
 fi
 EOF
 
