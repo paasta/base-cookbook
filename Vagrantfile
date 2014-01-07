@@ -26,7 +26,8 @@ EOF
           user: "login"
         },
         loghost: "@1.2.3.4:512",
-      }
+      },
+      openssh: {server: {permit_root_login: 'yes'}},
     }
   end
 end
