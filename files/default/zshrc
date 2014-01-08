@@ -26,3 +26,15 @@ alias cp="${aliases[cp]:-cp} -i"
 alias ln="${aliases[ln]:-ln} -i"
 alias mv="${aliases[mv]:-mv} -i"
 alias rm="${aliases[rm]:-rm} -i"
+
+alias vi=vim
+
+### Other ###
+
+source_dir() {
+  for file in "$1"/*.sh(DN.) ; do
+    source "$file"
+  done
+}
+
+source_dir "$HOME/.zsh"

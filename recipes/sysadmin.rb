@@ -64,3 +64,6 @@ cookbook_file "/root/.zshrc" do
   source "zshrc"
   mode 0644
 end
+directory "/root/.zsh" do
+  mode 0755
+end
