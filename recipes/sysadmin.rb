@@ -53,6 +53,10 @@ end
 directory "/root/.vim/swap" do
   mode 0755
 end
+file "/etc/profile.d/editor.sh" do
+  mode 0644
+  content "export EDITOR=vim\n"
+end
 
 # Use zsh
 package "zsh"
