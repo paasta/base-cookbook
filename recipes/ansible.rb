@@ -20,3 +20,5 @@ package "python-keyczar"
 
 # Used by apt_repo
 package "python-pycurl"
+package "python-apt"
+
