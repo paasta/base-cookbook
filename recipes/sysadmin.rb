@@ -12,6 +12,7 @@
   bmon
   cbm
   curl
+  dstat
   htop
   iftop
   iotop
