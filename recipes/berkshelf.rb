@@ -9,6 +9,25 @@ prefix = "/opt/chef/embedded/bin"
 
 package "build-essential"
 
+gem_package "buff-extensions" do
+  action :remove
+end
+
+gem_package "solve" do
+  action :install
+  version node.base.berkshelf_solve_version
+end
+
+#XXX: https://gist.github.com/tandiljuan/5a0015023b394ca1cce4
+gem_package "buff-extensions" do
+  action :install
+  version "0.3"
+end
+gem_package "buff-extensions" do
+  action :install
+  version "1.0"
+end
+
 gem_package "berkshelf" do
   gem_binary File.join(prefix, "gem")
   version node.base.berkshelf_version
@@ -22,11 +41,4 @@ end
 gem_package "solve" do
   action :remove
 end
-
-gem_package "solve" do
-  action :install
-  version node.base.berkshelf_solve_version
-end
-
-
 
