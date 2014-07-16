@@ -31,6 +31,9 @@ include_recipe "base::ansible"
 # Base packages
 include_recipe "base::packages"
 
+# Docker packages
+include_recipe "base::docker"
+
 # Berkshelf
 include_recipe "base::berkshelf"
 
