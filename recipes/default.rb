@@ -34,9 +34,6 @@ include_recipe "base::packages"
 # Docker packages
 include_recipe "base::docker"
 
-# Berkshelf
-include_recipe "base::berkshelf"
-
 # Configure root and it's tools
 include_recipe "base::sysadmin"
 
