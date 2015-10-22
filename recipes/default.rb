@@ -32,7 +32,9 @@ include_recipe "base::ansible"
 include_recipe "base::packages"
 
 # Docker packages
-include_recipe "base::docker"
+if node.base.install_docker
+  include_recipe "base::docker"
+end
 
 # Configure root and it's tools
 include_recipe "base::sysadmin"
