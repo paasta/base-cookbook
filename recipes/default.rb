@@ -36,6 +36,11 @@ if node.base.install_docker
   include_recipe "base::docker"
 end
 
+# Berkshelf
+if node.base.install_berkshelf
+  include_recipe "base::berkshelf"
+end
+
 # Configure root and it's tools
 include_recipe "base::sysadmin"
 
