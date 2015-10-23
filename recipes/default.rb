@@ -32,14 +32,10 @@ include_recipe "base::ansible"
 include_recipe "base::packages"
 
 # Docker packages
-if node.base.install_docker
-  include_recipe "base::docker"
-end
+include_recipe "base::docker"
 
 # Berkshelf
-if node.base.install_berkshelf
-  include_recipe "base::berkshelf"
-end
+include_recipe "base::berkshelf"
 
 # Configure root and it's tools
 include_recipe "base::sysadmin"

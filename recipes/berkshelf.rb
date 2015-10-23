@@ -5,6 +5,8 @@
 # Copyright (C) 2013 Jonas Pfenniger
 #
 
+return unless node.base.install_berkshelf
+
 prefix = "/opt/chef/embedded/bin"
 
 package "build-essential"

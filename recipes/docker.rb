@@ -5,6 +5,8 @@
 # Copyright (C) 2014 Aaron McNeal
 #
 
+return unless node.base.install_docker
+
 # Install packages that Docker wants
 %w[linux-image-generic-lts-raring linux-headers-generic-lts-raring].each do |pkg|
   package pkg
