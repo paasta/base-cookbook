@@ -46,3 +46,5 @@ include_recipe "base::login"
 # Configure the app environment
 include_recipe "base::app"
 
+# Configure ruby
+include_recipe "base::ruby"
