@@ -28,7 +28,7 @@ end
 service "rsyslog" do
   supports :restart => true, :reload => true
   action [:enable, :start]
-  if node[:platform] == 'ubuntu' && node[:platform_version] == '14.04'
+  if node['platform_version'].to_i >= 14
       provider Chef::Provider::Service::Upstart
   end
   notifies :run, "bash[rsyslog_remove_old_logs]", :delayed
